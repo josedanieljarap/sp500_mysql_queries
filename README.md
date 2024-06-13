@@ -177,12 +177,14 @@ SET
    LIMIT 10;
    ```
 
-3. Comparison of adjusted closing prices of companies on a specific date
+3. Comparison of adjusted closing prices of companies on the most recent date
    ```sql
-   SELECT c.symbol, c.shortname, s.date, s.adj_close
-   FROM sp500_companies c
-   JOIN sp500_stocks s ON c.symbol = s.symbol
-   WHERE s.date = '2023-01-01';
+    SELECT c.symbol, c.shortname, s.date, s.adj_close
+    FROM sp500_companies c
+    JOIN sp500_stocks s ON c.symbol = s.symbol
+    WHERE s.date = (SELECT MAX(date) FROM sp500_stocks)
+    ORDER BY s.adj_close DESC
+    LIMIT 10;
    ```
 
 4. Show rows with at least one NULL value in sp500_stocks
@@ -215,9 +217,11 @@ SET
 
 7. Daily average volume traded for each stock
    ```sql
-    SELECT symbol, AVG(volume) AS avg_volume
-    FROM sp500_stocks
-    GROUP BY symbol
+    SELECT s.symbol, c.longname, AVG(s.volume) AS avg_volume
+    FROM sp500_stocks s
+    JOIN sp500_companies c
+    ON s.symbol = c.symbol
+    GROUP BY s.symbol
     ORDER BY avg_volume DESC;
    ```
 

@@ -36,8 +36,8 @@ Access MySQL and create a user and database:
 sudo mysql -u juan -p
 ```
 ```sql
-SHOW DATABASES; // to list existing databases
-USE rendimiento_inversiones; // to connect to the database
+SHOW DATABASES; -- to list existing databases
+USE rendimiento_inversiones; -- to connect to the database
 ```
 
 Then create the databases with the script in the 'create_tables.sql' file. And then import the data obtained from Kaggle (url: https://www.kaggle.com/datasets/andrewmvd/sp-500-stocks/data) with the script in the 'import_data.sql' file.

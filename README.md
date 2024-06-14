@@ -178,6 +178,8 @@ SET
    ORDER BY revenuegrowth DESC 
    LIMIT 10;
    ```
+   ![image](https://github.com/josedanieljarap/sp500_mysql_queries/assets/50277190/4245ec07-eb9e-4823-becb-77672ac5706f)
+
 
 3. Comparison of adjusted closing prices of companies on the most recent date
    ```sql
@@ -188,8 +190,10 @@ SET
     ORDER BY s.adj_close DESC
     LIMIT 10;
    ```
+    ![image](https://github.com/josedanieljarap/sp500_mysql_queries/assets/50277190/7307d7d3-7848-4db1-86a8-2a2b0ba85465)
 
-4. Show rows with at least one NULL value in sp500_stocks
+
+4. Show rows with at least one NULL value in sp500_stocks (limited to the first 20 rows on the image)
    ```sql
     SELECT * FROM sp500_stocks 
     WHERE adj_close IS NULL 
@@ -199,6 +203,8 @@ SET
        OR open IS NULL 
        OR volume IS NULL;
    ```
+   ![image](https://github.com/josedanieljarap/sp500_mysql_queries/assets/50277190/05ab187b-324a-467f-85f4-d6a4df2cef8c)
+
 
 5. Average adjusted closing price per sector
    ```sql
@@ -208,6 +214,8 @@ SET
     GROUP BY c.sector
     ORDER BY avg_adj_close DESC;
    ```
+   ![image](https://github.com/josedanieljarap/sp500_mysql_queries/assets/50277190/23e3cd50-1b33-4f31-8968-494128f90f13)
+
 
 6. Top 5 companies with the highest EBITDA
    ```sql
@@ -216,8 +224,10 @@ SET
     ORDER BY ebitda DESC 
     LIMIT 5;
    ```
+   ![image](https://github.com/josedanieljarap/sp500_mysql_queries/assets/50277190/e24434c2-0897-401d-bf98-9d2a734e15a1)
 
-7. Daily average volume traded for each stock
+
+7. Daily average volume traded for each stock (limited to the first 20 rows on the image)
    ```sql
     SELECT s.symbol, c.longname, AVG(s.volume) AS avg_volume
     FROM sp500_stocks s
@@ -226,6 +236,9 @@ SET
     GROUP BY s.symbol
     ORDER BY avg_volume DESC;
    ```
+   ![image](https://github.com/josedanieljarap/sp500_mysql_queries/assets/50277190/143a58a0-1f40-4835-9b06-83c56755450e)
+
+   
 
 8. Percentage change in the S&P 500 index value over a specific period
    ```sql
@@ -236,17 +249,20 @@ SET
     FROM sp500_index
     WHERE date BETWEEN '2023-01-01' AND '2023-12-31';
    ```
+   ![image](https://github.com/josedanieljarap/sp500_mysql_queries/assets/50277190/5cfe470e-ba95-4a2b-a442-682030ee3d4d)
 
-9. List companies with a market cap above a certain threshold and sorted by revenue growth
+
+9. List companies with a market cap above a certain threshold and sorted by revenue growth (limited to the first 20 rows on the image)
    ```sql
     SELECT symbol, shortname, marketcap, revenuegrowth
     FROM sp500_companies
     WHERE marketcap > 100000000000  -- Example threshold: 100 billion
     ORDER BY revenuegrowth DESC;
    ```
+   ![image](https://github.com/josedanieljarap/sp500_mysql_queries/assets/50277190/59d1e980-8314-4816-bdc7-5421438355c9)
 
 
-10. Monthly average adjusted closing price for each stock
+10. Monthly average adjusted closing price for each stock (limited to the first 20 rows on the image)
    ```sql
     SELECT symbol, 
            DATE_FORMAT(date, '%Y-%m') AS month, 
@@ -255,6 +271,8 @@ SET
     GROUP BY symbol, month
     ORDER BY symbol, month;
    ```
+   ![image](https://github.com/josedanieljarap/sp500_mysql_queries/assets/50277190/8fb86383-0db2-44e9-b9cf-9b3b4f2a13fd)
+
 
 11. Find the top 10 companies with the highest adjusted closing price on the most recent date
    ```sql
@@ -265,6 +283,13 @@ SET
     ORDER BY s.adj_close DESC
     LIMIT 10;
    ```
+   ![image](https://github.com/josedanieljarap/sp500_mysql_queries/assets/50277190/d28d3e36-6536-4b26-abe5-214ed1579bf0)
+
+
+
+
+
+
 
 
 

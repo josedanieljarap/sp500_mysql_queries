@@ -168,6 +168,8 @@ SET
    ORDER BY marketcap DESC 
    LIMIT 10;
    ```
+   ![image](https://github.com/josedanieljarap/sp500_mysql_queries/assets/50277190/fb557ece-22c3-4cf5-b423-2b26642adaf9)
+
 
 2. Companies with the highest revenue growth
    ```sql
